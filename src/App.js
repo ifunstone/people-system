@@ -5,7 +5,8 @@ import './App.less';
 function App() {
   return (
     <div className="app">
-      <IndexPage></IndexPage>
+      {/* <IndexPage></IndexPage> */}
+      <DetailPage></DetailPage>
     </div>
   );
 }

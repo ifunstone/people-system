@@ -1,0 +1,78 @@
+.ja-detail-layout {
+  padding: 40px 20px;
+}
+
+.ja-detail-info-layer {
+  height: 126px;
+  background: url(../assets/images/person-info-bg.png) no-repeat;
+  background-size: 100% 100%;
+  position: relative;
+
+  .ja-person-img {
+    background: url(../assets/images/person-head-img-bg.png) no-repeat;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    top: 15px;
+    left: 42px;
+    position: relative;
+    // padding: 19px 0 0 42px;
+    img {
+      width: 90px;
+      height: 90px;
+    }
+  }
+
+  .ja-person-info-detail {
+    position: absolute;
+    top: 30px;
+    left: 160px;
+    .ja-person-name {
+      font-size: 20px;
+      color: #ead38f;
+    }
+    .ja-person-info-list {
+      font-size: 12px;
+      color: #ffffff;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      li {
+        float: left;
+        margin-right: 20px;
+        b {
+            color: #ff0000;
+        }
+      }
+    }
+  }
+
+  .ja-person-info-operate {
+    position: absolute;
+    top: 48px;
+    right: 30px;
+  }
+}
+
+.ja-static-button {
+    display: inline-block;
+    width: 100px;
+    height: 32px;
+    cursor: pointer;
+    border: none;
+    text-align: center;
+    line-height: 32px;
+    font-size: 14px;
+    color: #7FB7EA;
+    margin: 0 10px;
+}
+
+.ja-static-button_primary {
+    background: url(../assets/images/static-primary-btn.png) no-repeat;
+}
+
+.ja-static-button_worning {
+    background: url(../assets/images/static-worning-btn.png) no-repeat;
+    color: #DB403F;
+}
