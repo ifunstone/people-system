@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import "./index.less";
-import PERSON_IMAGE from "./../../assets/images/idcard-icon.png";
+import "../../styles/index.less";
 
 import {
   Form,

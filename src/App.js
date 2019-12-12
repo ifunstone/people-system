@@ -1,5 +1,5 @@
 import React from 'react';
-import {IndexPage} from './pages';
+import {IndexPage, DetailPage} from './pages';
 import './App.less';
 
 function App() {
