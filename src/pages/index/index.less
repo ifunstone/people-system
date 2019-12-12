@@ -1,0 +1,43 @@
+.ja-layout {
+  position: relative;
+  height: 100%;
+  padding: 20px 0;
+}
+
+.ja-header {
+  height: 38px;
+  color: rgba(135, 205, 228, 1);
+}
+
+.ja-content {
+  color: rgba(255, 255, 255, 1);
+  height: 100%;
+  width: 100%;
+  top: 0;
+  padding-top: 58px;
+  position: absolute;
+}
+
+.ja-footer {
+  height: 84px;
+  width: 100%;
+  color: rgba(135, 205, 228, 1);
+  position: absolute;
+  bottom: 0;
+}
+
+.ja-person-card {
+    display: block;
+    > li {
+        display: inline-block;
+        width: 248px;
+        height: 333px;
+        background: url(../../assets/images/person-bg-default.png) no-repeat;
+        background-position: center;
+        
+    }
+    > li.selected {
+        
+        background: url(../../assets/images/person-bg-hightlight.png) no-repeat;        
+    }
+}
