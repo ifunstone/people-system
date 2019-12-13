@@ -1,5 +1,6 @@
 .ja-detail-layout {
   padding: 40px 20px;
+  min-height: 100%;
 }
 
 .ja-detail-info-layer {
@@ -53,18 +54,39 @@
     top: 48px;
     right: 30px;
   }
+
+  .ja-detail-info-over {
+    top: 0;
+    position: absolute;
+    width: 20px;
+    height: 133px;
+  }
+
+  .ja-detail-info-over__left {
+    left: 0;
+    background: url(../assets/images/over-layer-left.png) no-repeat;
+  }
+
+  .ja-detail-info-over__right {
+    right: 0;
+    background: url(../assets/images/over-layer-right.png) no-repeat;
+  }
 }
 
 .ja-detail-info-content {
   .ja-detail-item {
-    border-top: 2px solid rgba(87, 138, 184, 1);
+    border-top: 1px solid rgba(87, 138, 184, 1);
     margin: 20px 0;
 
     .ja-detail-item_content_left {
-      width: 970px;
+      position: relative;
       margin: 0 auto;
+      width: 80%;
 
       .ja-baseinfo-des {
+        // position: relative;
+        // margin: 0 auto;
+        // width: 80%;
         height: 40px;
         background-image: linear-gradient(90deg, #ae6969 0%, #de3e3d 100%);
         font-size: 12px;
@@ -73,12 +95,108 @@
         text-indent: 20px;
       }
     }
-
-    .ja-detail-item_content_right {
-    }
   }
   .ja-detail-item_right {
     margin-left: 20px;
+
+    border: none;
+    .ja-detail-chart {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      li {
+        border-top: 1px solid rgba(87, 138, 184, 1);
+        margin-bottom: 40px;
+        .ja-detail-chart__main_title {
+          margin: 10px 15px;
+          font-size: 16px;
+          color: #ffffff;
+        }
+      }
+    }
+    .ja-detail-item_content_right {
+    }
+  }
+}
+
+.ja-slide-viewer {
+  .ja-slide-viewer__main {
+    position: relative;
+    margin: 0 auto;
+    width: 60%;
+    .ja-slide-viewer-zoom {
+      text-align: center;
+      font-size: 14px;
+      line-height: 40px;
+      color: #ffffff;
+      position: absolute;
+      bottom: 20px;
+      margin-left: 50%;
+      left: -75px;
+      width: 130px;
+      height: 40px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 20px;
+
+      .ja-zoom-add-icon {
+        float: left;
+        top: 8px;
+        left: 5px;
+        cursor: pointer;
+      }
+      .ja-zoom-cut-icon {
+        float: right;
+        right: 5px;
+        top: 8px;
+        cursor: pointer;
+      }
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .ja-slide-viewer__control {
+    background: url(../assets/images/img-viewer-control-bg.png) no-repeat;
+    position: relative;
+    padding-top: 20px;
+
+    .ja-slide-btn {
+      position: absolute;
+      width: 24px;
+      height: 90px;
+      cursor: pointer;
+      top: 20px;
+    }
+    .ja-slide__prev_btn {
+      background: url(../assets/images/arrow-left-icon.png) no-repeat;
+    }
+    .ja-slide-viewer__clip {
+      margin: 0 40px;
+      overflow: hidden;
+      .ja-slide-viewer-list {
+        margin: 0;
+        padding: 0;
+        width: 1000000px;
+        list-style: none;
+        li {
+          width: 90px;
+          height: 90px;
+          float: left;
+          margin-right: 10px;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+
+    .ja-slide__next_btn {
+      right: 0;
+      background: url(../assets/images/arrow-right-icon.png) no-repeat;
+    }
   }
 }
 
@@ -104,14 +222,15 @@
   }
 }
 .ja-baseinfo-list::after {
-    content: ' ';
-    display: block;
-    clear: both;
+  content: " ";
+  display: block;
+  clear: both;
 }
 
 .ja-static-button {
   display: inline-block;
-  width: 100px;
+  min-width: 100px;
+  padding: 0 20px;
   height: 32px;
   cursor: pointer;
   border: none;
@@ -123,10 +242,22 @@
 }
 
 .ja-static-button_primary {
-  background: url(../assets/images/static-primary-btn.png) no-repeat;
+  background-image: linear-gradient(
+    90deg,
+    #0c3259 0%,
+    #162232 50%,
+    #142d49 100%
+  );
+  border: 1px solid #396ca3;
 }
 
 .ja-static-button_worning {
-  background: url(../assets/images/static-worning-btn.png) no-repeat;
+  background-image: linear-gradient(
+    90deg,
+    #3c1d0a 0%,
+    #0c1722 50%,
+    #46220a 100%
+  );
+  border: 1px solid #db403f;
   color: #db403f;
 }

@@ -22,6 +22,7 @@ class Detail extends Component {
     return (
       <div className="ja-detail-layout">
         <div className="ja-detail-info-layer">
+          <div className="ja-detail-info-over ja-detail-info-over__left"></div>
           <div className="ja-person-img">
             <img src="./logo192.png"></img>
           </div>
@@ -52,6 +53,7 @@ class Detail extends Component {
               误报
             </button>
           </div>
+          <div className="ja-detail-info-over ja-detail-info-over__right"></div>
         </div>
         <div className="ja-detail-info-content">
           <Row>
@@ -71,13 +73,50 @@ class Detail extends Component {
                   <div className="ja-baseinfo-des">
                   最后一次出现在该小区
                   </div>
+                  <div className="ja-slide-viewer">
+                  <div className="ja-slide-viewer__main">
+                  <img src="./logo192.png"></img>
+                  <div className="ja-slide-viewer-zoom">
+                    <i className="ja-icon ja-zoom-add-icon"></i>
+                    <span>100%</span>
+                    <i className="ja-icon ja-zoom-cut-icon"></i>
+                  </div>
+                  </div>
+                  <div className="ja-slide-viewer__control">
+                    <div className="ja-slide-btn ja-slide__prev_btn"></div>
+                    <div className="ja-slide-viewer__clip">
+                      <ul className="ja-slide-viewer-list">
+                        <li><img src="./logo192.png"></img></li>
+                        <li><img src="./logo192.png"></img></li>
+                        <li><img src="./logo192.png"></img></li>
+                        <li><img src="./logo192.png"></img></li>
+                        <li><img src="./logo192.png"></img></li>
+                        <li><img src="./logo192.png"></img></li>
+                        <li><img src="./logo192.png"></img></li>
+                        <li><img src="./logo192.png"></img></li>
+                        <li><img src="./logo192.png"></img></li>
+                        <li><img src="./logo192.png"></img></li>
+                        </ul>
+                    </div>
+                    <div className="ja-slide-btn ja-slide__next_btn"></div>
+                  </div>
+                  </div>
                 </div>
               </div>
             </Col>
             <Col span="8">
               <div className="ja-detail-item ja-detail-item_right">
                 <div className="ja-detail-item_content_right">
+                  <ul className="ja-detail-chart">
+                    <li>
+                      <div className="ja-detail-chart__main_title"><i className="ja-icon four-side-start-icon"></i>月内每周时间段活动规律</div>
 
+                    </li>
+                    <li>
+                      <div className="ja-detail-chart__main_title"><i className="ja-icon four-side-start-icon"></i>月出现次数统计</div>
+
+                    </li>
+                  </ul>
                 </div>
               </div>
             </Col>
