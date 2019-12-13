@@ -4,8 +4,8 @@
 
 .ja-detail-info-layer {
   height: 126px;
-  background: url(../assets/images/person-info-bg.png) no-repeat;
-  background-size: 100% 100%;
+  background: url(../assets/images/person-info-bg-pattern.png) repeat-x;
+  //   background-size: 100% 100%;
   position: relative;
 
   .ja-person-img {
@@ -42,7 +42,7 @@
         float: left;
         margin-right: 20px;
         b {
-            color: #ff0000;
+          color: #ff0000;
         }
       }
     }
@@ -55,24 +55,78 @@
   }
 }
 
+.ja-detail-info-content {
+  .ja-detail-item {
+    border-top: 2px solid rgba(87, 138, 184, 1);
+    margin: 20px 0;
+
+    .ja-detail-item_content_left {
+      width: 970px;
+      margin: 0 auto;
+
+      .ja-baseinfo-des {
+        height: 40px;
+        background-image: linear-gradient(90deg, #ae6969 0%, #de3e3d 100%);
+        font-size: 12px;
+        color: #ffffff;
+        line-height: 40px;
+        text-indent: 20px;
+      }
+    }
+
+    .ja-detail-item_content_right {
+    }
+  }
+  .ja-detail-item_right {
+    margin-left: 20px;
+  }
+}
+
+.ja-baseinfo-list {
+  list-style: none;
+  margin: 10px 0;
+  padding: 0;
+
+  li {
+    float: left;
+    margin-right: 20px;
+    height: 40px;
+    line-height: 40px;
+    .ja-item-label {
+      font-size: 12px;
+      color: #7fb7ea;
+    }
+    .ja-item-value {
+      margin: 0 8px;
+      font-size: 12px;
+      color: #ffffff;
+    }
+  }
+}
+.ja-baseinfo-list::after {
+    content: ' ';
+    display: block;
+    clear: both;
+}
+
 .ja-static-button {
-    display: inline-block;
-    width: 100px;
-    height: 32px;
-    cursor: pointer;
-    border: none;
-    text-align: center;
-    line-height: 32px;
-    font-size: 14px;
-    color: #7FB7EA;
-    margin: 0 10px;
+  display: inline-block;
+  width: 100px;
+  height: 32px;
+  cursor: pointer;
+  border: none;
+  text-align: center;
+  line-height: 32px;
+  font-size: 14px;
+  color: #7fb7ea;
+  margin: 0 10px;
 }
 
 .ja-static-button_primary {
-    background: url(../assets/images/static-primary-btn.png) no-repeat;
+  background: url(../assets/images/static-primary-btn.png) no-repeat;
 }
 
 .ja-static-button_worning {
-    background: url(../assets/images/static-worning-btn.png) no-repeat;
-    color: #DB403F;
+  background: url(../assets/images/static-worning-btn.png) no-repeat;
+  color: #db403f;
 }
