@@ -62,44 +62,62 @@ class Detail extends Component {
                 <div className="ja-detail-item_content_left">
                   <ul className="ja-baseinfo-list">
                     <li>
-                      <span className="ja-item-label">抓拍时间</span> 
-                      <span className="ja-item-value">2019-09-20 12:23:06</span> 
+                      <span className="ja-item-label">抓拍时间</span>
+                      <span className="ja-item-value">2019-09-20 12:23:06</span>
                     </li>
                     <li>
-                      <span className="ja-item-label">抓拍地点</span> 
-                      <span className="ja-item-value">xxxxxx</span> 
+                      <span className="ja-item-label">抓拍地点</span>
+                      <span className="ja-item-value">xxxxxx</span>
                     </li>
                   </ul>
-                  <div className="ja-baseinfo-des">
-                  最后一次出现在该小区
-                  </div>
+                  <div className="ja-baseinfo-des">最后一次出现在该小区</div>
                   <div className="ja-slide-viewer">
-                  <div className="ja-slide-viewer__main">
-                  <img src="./logo192.png"></img>
-                  <div className="ja-slide-viewer-zoom">
-                    <i className="ja-icon ja-zoom-add-icon"></i>
-                    <span>100%</span>
-                    <i className="ja-icon ja-zoom-cut-icon"></i>
-                  </div>
-                  </div>
-                  <div className="ja-slide-viewer__control">
-                    <div className="ja-slide-btn ja-slide__prev_btn"></div>
-                    <div className="ja-slide-viewer__clip">
-                      <ul className="ja-slide-viewer-list">
-                        <li><img src="./logo192.png"></img></li>
-                        <li><img src="./logo192.png"></img></li>
-                        <li><img src="./logo192.png"></img></li>
-                        <li><img src="./logo192.png"></img></li>
-                        <li><img src="./logo192.png"></img></li>
-                        <li><img src="./logo192.png"></img></li>
-                        <li><img src="./logo192.png"></img></li>
-                        <li><img src="./logo192.png"></img></li>
-                        <li><img src="./logo192.png"></img></li>
-                        <li><img src="./logo192.png"></img></li>
-                        </ul>
+                    <div className="ja-slide-viewer__main">
+                      <img src="./logo192.png"></img>
+                      <div className="ja-slide-viewer-zoom">
+                        <i className="ja-icon ja-zoom-add-icon"></i>
+                        <span>100%</span>
+                        <i className="ja-icon ja-zoom-cut-icon"></i>
+                      </div>
                     </div>
-                    <div className="ja-slide-btn ja-slide__next_btn"></div>
-                  </div>
+                    <div className="ja-slide-viewer__control">
+                      <div className="ja-slide-btn ja-slide__prev_btn"></div>
+                      <div className="ja-slide-viewer__clip">
+                        <ul className="ja-slide-viewer-list">
+                          <li>
+                            <img src="./logo192.png"></img>
+                          </li>
+                          <li>
+                            <img src="./logo192.png"></img>
+                          </li>
+                          <li>
+                            <img src="./logo192.png"></img>
+                          </li>
+                          <li>
+                            <img src="./logo192.png"></img>
+                          </li>
+                          <li>
+                            <img src="./logo192.png"></img>
+                          </li>
+                          <li>
+                            <img src="./logo192.png"></img>
+                          </li>
+                          <li>
+                            <img src="./logo192.png"></img>
+                          </li>
+                          <li>
+                            <img src="./logo192.png"></img>
+                          </li>
+                          <li>
+                            <img src="./logo192.png"></img>
+                          </li>
+                          <li>
+                            <img src="./logo192.png"></img>
+                          </li>
+                        </ul>
+                      </div>
+                      <div className="ja-slide-btn ja-slide__next_btn"></div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -109,12 +127,22 @@ class Detail extends Component {
                 <div className="ja-detail-item_content_right">
                   <ul className="ja-detail-chart">
                     <li>
-                      <div className="ja-detail-chart__main_title"><i className="ja-icon four-side-start-icon"></i>月内每周时间段活动规律</div>
-
+                      <div className="ja-detail-chart__main_title">
+                        <i className="ja-icon four-side-start-icon"></i>
+                        月内每周时间段活动规律
+                      </div>
+                      <div className="ja-detail-chart-content">
+                        Chart content
+                      </div>
                     </li>
                     <li>
-                      <div className="ja-detail-chart__main_title"><i className="ja-icon four-side-start-icon"></i>月出现次数统计</div>
-
+                      <div className="ja-detail-chart__main_title">
+                        <i className="ja-icon four-side-start-icon"></i>
+                        月出现次数统计
+                      </div>
+                      <div className="ja-detail-chart-content">
+                        Chart content
+                      </div>
                     </li>
                   </ul>
                 </div>
