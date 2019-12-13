@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { IndexPage, DetailPage } from "./pages";
+import App from './App';
 import "./index.css";
 import './App.less';
 
@@ -9,6 +10,7 @@ import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
   <Router>
+    <App>
     <Switch>
       <Route path="/index">
         <IndexPage />
@@ -20,6 +22,7 @@ ReactDOM.render(
         <IndexPage />
       </Route>
     </Switch>
+    </App>
   </Router>,
   document.getElementById("root")
 );
