@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import "../../styles/index.less";
-import "../../styles/detail.less";
+import { connect } from 'dva';
+
+import "@/styles/index.less";
+import "@/styles/detail.less";
 
 import {
   Form,
@@ -57,7 +59,7 @@ class Detail extends Component {
         </div>
         <div className="ja-detail-info-content">
           <Row>
-            <Col span="16">
+            <Col span={16}>
               <div className="ja-detail-item">
                 <div className="ja-detail-item_content_left">
                   <ul className="ja-baseinfo-list">
@@ -122,7 +124,7 @@ class Detail extends Component {
                 </div>
               </div>
             </Col>
-            <Col span="8">
+            <Col span={8}>
               <div className="ja-detail-item ja-detail-item_right">
                 <div className="ja-detail-item_content_right">
                   <ul className="ja-detail-chart">
@@ -155,4 +157,4 @@ class Detail extends Component {
   }
 }
 
-export default Form.create()(Detail);
+export default connect()(Form.create()(Detail));

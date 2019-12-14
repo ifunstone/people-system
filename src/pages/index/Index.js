@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import "../../styles/index.less";
+import { connect } from 'dva';
+import "@/styles/index.less";
 
 import {
   Form,
@@ -20,8 +21,33 @@ const { Option } = Select;
 const AutoCompleteOption = AutoComplete.Option;
 
 class Index extends Component {
+  constructor() {
+    super();
+    this.state = {
+      separateList: [
+        {
+          key: -1,
+          value: "全部"
+        },
+        {
+          key: 0,
+          value: "人在户不在"
+        },
+        {
+          key: 1,
+          value: "户在人不在"
+        },
+        {
+          key: 999,
+          value: "误报"
+        }
+      ]
+    };
+  }
+  componentDidMount() {}
   render() {
     const { getFieldDecorator } = this.props.form;
+    const { separateList } = this.state;
     // const { autoCompleteResult } = this.state;
 
     const SELECT_WIDTH = 220;
@@ -65,7 +91,7 @@ class Index extends Component {
               <li></li>
               <li className="selected"></li>
               <li className="selected"></li>
-            {/* </ul>
+              {/* </ul>
             <ul className="ja-person-card"> */}
               <li>
                 <div className="ja-person-info">
@@ -94,41 +120,30 @@ class Index extends Component {
           <Row>
             <Col span={21}>
               <Form layout="inline">
-                <Form.Item label="搬离类型">
+                <Form.Item label="分离类型">
                   <Select placeholder="请选择" style={{ width: SELECT_WIDTH }}>
-                    <Option value="jack">Jack</Option>
-                    <Option value="lucy">Lucy</Option>
-                    <Option value="Yiminghe">yiminghe</Option>
+                    {separateList.map((item, key)=> {
+                      return  <Option key={key} value={item.key}>{item.value}</Option>
+                    })}
                   </Select>
                 </Form.Item>
 
-                <Form.Item label="处理状态">
+                <Form.Item label="小区编码">
                   <Select
-                    defaultValue="lucy"
-                    placeholder="未处理"
+                    placeholder="请选择"
                     style={{ width: SELECT_WIDTH }}
                   >
-                    <Option value="jack">Jack</Option>
-                    <Option value="lucy">未处理</Option>
-                    <Option value="Yiminghe">yiminghe</Option>
-                  </Select>
-                </Form.Item>
-
-                <Form.Item label="搬离类型">
-                  <Select placeholder="全部" style={{ width: SELECT_WIDTH }}>
-                    <Option value="jack">Jack</Option>
-                    <Option value="lucy">Lucy</Option>
-                    <Option value="Yiminghe">yiminghe</Option>
+                    {/* <Option value=""></Option> */}
                   </Select>
                 </Form.Item>
               </Form>
             </Col>
             <Col span={3}>
-              <Form>
+              {/* <Form>
                 <Form.Item style={{ float: "right" }}>
                   <Button icon="search">打印</Button>
                 </Form.Item>
-              </Form>
+              </Form> */}
             </Col>
           </Row>
         </div>
@@ -145,19 +160,19 @@ class Index extends Component {
             </Col>
             <Col span={18}>
               <div style={{ float: "right", lineHeight: "30px" }}>
-              <Button className="ja-float-right">跳转</Button>
-              
-              <span className="ja-text-middle ja-float-right">/5页</span>
-              <Input
-                className="ja-float-right"
-                style={{ width: "40px", margin: "0 10px" }}
-              ></Input>
-              <span className="ja-text-middle ja-float-right">跳转至</span>
-              <Pagination
-                defaultCurrent={1}
-                total={50}
-                className="ja-float-right"
-              />
+                <Button className="ja-float-right">跳转</Button>
+
+                <span className="ja-text-middle ja-float-right">/5页</span>
+                <Input
+                  className="ja-float-right"
+                  style={{ width: "40px", margin: "0 10px" }}
+                ></Input>
+                <span className="ja-text-middle ja-float-right">跳转至</span>
+                <Pagination
+                  defaultCurrent={1}
+                  total={50}
+                  className="ja-float-right"
+                />
               </div>
             </Col>
           </Row>
@@ -166,4 +181,4 @@ class Index extends Component {
     );
   }
 }
-export default Form.create()(Index);
+export default connect()(Form.create()(Index));

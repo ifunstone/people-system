@@ -1,31 +1,20 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { IndexPage, DetailPage } from "./pages";
-import App from './App';
-import "./index.css";
-import './App.less';
-
+import dva from 'dva';
 import * as serviceWorker from "./serviceWorker";
+// 1. Initialize
+const app = dva();
 
-ReactDOM.render(
-  <Router>
-    <App>
-    <Switch>
-      <Route path="/index">
-        <IndexPage />
-      </Route>
-      <Route path="/detail">
-        <DetailPage />
-      </Route>
-      <Route path="/">
-        <IndexPage />
-      </Route>
-    </Switch>
-    </App>
-  </Router>,
-  document.getElementById("root")
-);
+// 2. Plugins
+// app.use({});
+
+// 3. Model
+// app.model(require('./models/example').default);
+
+// 4. Router
+app.router(require('./router').default);
+
+// 5. Start
+app.start('#root');
+
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
