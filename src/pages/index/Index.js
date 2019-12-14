@@ -23,31 +23,19 @@ const AutoCompleteOption = AutoComplete.Option;
 class Index extends Component {
   constructor() {
     super();
-    this.state = {
-      separateList: [
-        {
-          key: -1,
-          value: "全部"
-        },
-        {
-          key: 0,
-          value: "人在户不在"
-        },
-        {
-          key: 1,
-          value: "户在人不在"
-        },
-        {
-          key: 999,
-          value: "误报"
-        }
-      ]
-    };
   }
-  componentDidMount() {}
+  componentDidMount() {
+    const { dispatch, separateTypeList } = this.props;
+    // dispatch({
+    //   type: 'separate/save',
+    //   payload: 12
+    // })
+    // console.log(dispatch, separateTypeList)
+  }
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { separateList } = this.state;
+    const { separateTypeList } = this.props.separate;
+    console.log(this.props)
     // const { autoCompleteResult } = this.state;
 
     const SELECT_WIDTH = 220;
@@ -122,9 +110,9 @@ class Index extends Component {
               <Form layout="inline">
                 <Form.Item label="分离类型">
                   <Select placeholder="请选择" style={{ width: SELECT_WIDTH }}>
-                    {separateList.map((item, key)=> {
+                    {separateTypeList ? separateTypeList.map((item, key)=> {
                       return  <Option key={key} value={item.key}>{item.value}</Option>
-                    })}
+                    }) : null}
                   </Select>
                 </Form.Item>
 
@@ -181,4 +169,6 @@ class Index extends Component {
     );
   }
 }
-export default connect()(Form.create()(Index));
+export default connect(({separate}) => ({
+  separate
+}))(Form.create()(Index))

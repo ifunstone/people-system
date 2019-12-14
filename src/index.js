@@ -1,13 +1,18 @@
 import dva from 'dva';
+import createLoading from 'dva-loading';
 import * as serviceWorker from "./serviceWorker";
 // 1. Initialize
-const app = dva();
+const app = dva({
+  initialState: {
+    
+  }
+});
 
 // 2. Plugins
-// app.use({});
+app.use(createLoading());
 
 // 3. Model
-// app.model(require('./models/example').default);
+app.model(require('./models/separate').default);
 
 // 4. Router
 app.router(require('./router').default);
