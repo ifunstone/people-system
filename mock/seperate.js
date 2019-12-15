@@ -1,0 +1,30 @@
+export default {
+    // 支持值为 Object 和 Array
+    'GET /ctm01jajsgarhfl/web/separate/page': {
+        "code": "0",
+        "msg": "success",
+        "data": {
+            "content": [
+                {
+                    "id": 53,
+                    "name": "",
+                    "certificateNumber": "",
+                    "picUrl": "",
+                    "unAppearDay": "",
+                    "appearDays": 0,
+                    "appearTimes": 0,
+                    "statisticDays": 7,
+                    "typeStr": "户在人不在"
+                }
+            ]
+        },
+        "count": 4,
+        "first": true,
+        "last": true,
+        "empty": false,
+        "totalPages": 1,
+        "totalElements": 4,
+        "page": 0,
+        "size": 20
+    }
+}

@@ -1,5 +1,11 @@
 import request from '../utils/request';
 
-export function query() {
-  return request('/api/users');
+const BASE_PATH = '/ctm01jajsgarhfl/web';
+
+export function typeList() {
+  return request(BASE_PATH + '/separate/type/list');
+}
+
+export function pageList(options) {
+  return request(BASE_PATH + '/separate/page', options);
 }

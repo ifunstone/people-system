@@ -2,7 +2,7 @@ const {
   override,
   fixBabelImports,
   addLessLoader,
-  addWebpackAlias,
+  addWebpackAlias
 } = require("customize-cra");
 const path = require("path");
 
@@ -46,12 +46,43 @@ module.exports = {
       //   passphrase: process.env.REACT_HTTPS_PASS
       // };
 
-      config.proxy = {
-        "/baidu": {
-          target: "https://www.qq.com",
-          changeOrigin: true
-        }
+      config.headers = {
+        "Postman-Token": "167d9a63-795e-4cbb-9610-c12a6bda0df9"
       };
+
+      config.setup = function(app, server) {
+        app.get("/ctm01jajsgarhfl/web/separate/type/list", function(req, res) {
+          res.json({
+            code: 0,
+            msg: "success",
+            data: [
+              {
+                key: -1,
+                value: "全部"
+              },
+              {
+                key: 0,
+                value: "人在户不在"
+              },
+              {
+                key: 1,
+                value: "户在人不在"
+              },
+              {
+                key: 999,
+                value: "误报"
+              }
+            ]
+          });
+        });
+      };
+      // config.proxy = {
+      //   "/ctm01jajsgarhfl": {
+      //     target:
+      //       "http://8e732654-d820-4fbf-9aa2-46302ba58f78.mock.pstmn.io/ctm01jajsgarhfl",
+      //     changeOrigin: true
+      //   }
+      // };
 
       // Return your customised Webpack Development Server config.
       return config;

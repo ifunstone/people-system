@@ -26,10 +26,12 @@ class Index extends Component {
   }
   componentDidMount() {
     const { dispatch, separateTypeList } = this.props;
-    // dispatch({
-    //   type: 'separate/save',
-    //   payload: 12
-    // })
+    dispatch({
+      type: 'separate/typeList',
+    })
+    dispatch({
+      type: 'separate/pageList',
+    })
     // console.log(dispatch, separateTypeList)
   }
   render() {
