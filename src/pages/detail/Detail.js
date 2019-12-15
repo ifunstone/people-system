@@ -1,13 +1,10 @@
 import React, { Component } from "react";
-import { connect } from 'dva';
-
-import "@/styles/index.less";
-import "@/styles/detail.less";
-
+import { connect } from "dva";
+import { Chart, Axis, Legend, Tooltip, Geom } from "bizcharts";
 import {
   Form,
   Input,
-  Tooltip,
+  // Tooltip,
   Icon,
   Cascader,
   Select,
@@ -19,7 +16,22 @@ import {
   Pagination
 } from "antd";
 
+import "@/styles/index.less";
+import "@/styles/detail.less";
+
+
+
+const data = [{ month: "Jan.", count: 69, city: "tokyo" }];
+const scale = {
+  month: { alias: "Month" },
+  count: { alias: "Sales" }
+};
+
 class Detail extends Component {
+  componentDidMount() {
+
+  }
+
   render() {
     return (
       <div className="ja-detail-layout">
@@ -134,7 +146,17 @@ class Detail extends Component {
                         月内每周时间段活动规律
                       </div>
                       <div className="ja-detail-chart-content">
-                        Chart content
+                        <Chart height={400} data={data} scale={scale} forceFit>
+                          <Axis title name="month" />
+                          <Axis title name="count" />
+                          <Legend />
+                          <Tooltip crosshairs={{ type: "rect" }} />
+                          <Geom
+                            type="interval"
+                            position="month*count"
+                            color="month"
+                          />
+                        </Chart>
                       </div>
                     </li>
                     <li>
