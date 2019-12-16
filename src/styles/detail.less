@@ -125,7 +125,13 @@
   .ja-slide-viewer__main {
     position: relative;
     margin: 0 auto;
-    width: 60%;
+    overflow: hidden;
+    margin-bottom: 10px;
+    background-size: 78%;
+    height: 480px;
+    background-position: center center;
+    background-repeat: no-repeat;
+
     .ja-slide-viewer-zoom {
       text-align: center;
       font-size: 14px;
@@ -191,8 +197,10 @@
             width: 100%;
             height: 100%;
           }
+          cursor: pointer;
         }
-        li:hover, li.selected {
+        li:hover,
+        li.selected {
           border: 1px solid #7fb7ea;
         }
       }
