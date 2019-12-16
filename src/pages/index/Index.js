@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { connect } from 'dva';
+import { Router, Route, Switch, Link } from "dva/router";
+import { connect } from "dva";
 import "@/styles/index.less";
 
 import {
@@ -27,17 +28,17 @@ class Index extends Component {
   componentDidMount() {
     const { dispatch, separateTypeList } = this.props;
     dispatch({
-      type: 'separate/typeList',
-    })
+      type: "separate/typeList"
+    });
     dispatch({
-      type: 'separate/pageList',
-    })
+      type: "separate/pageList"
+    });
     // console.log(dispatch, separateTypeList)
   }
   render() {
     const { getFieldDecorator } = this.props.form;
     const { separateTypeList } = this.props.separate;
-    console.log(this.props)
+    console.log(this.props);
     // const { autoCompleteResult } = this.state;
 
     const SELECT_WIDTH = 220;
@@ -47,20 +48,22 @@ class Index extends Component {
           <div style={{ padding: "15px 30px" }} className="ja-content-inner">
             <ul className="ja-person-card">
               <li>
-                <div className="ja-person-info">
-                  <img src="./logo192.png"></img>
-                  <ul className="ja-person-info-list">
-                    <li className="user-name">曹平</li>
-                    <li>
-                      <i className="ja-icon ja-idcard-icon"></i>
-                      330480198703091203
-                    </li>
-                    <li>
-                      <i className="ja-icon ja-circle-with-wave-icon"></i>
-                      连续18天未出现
-                    </li>
-                  </ul>
-                </div>
+                <Link to="/detail">
+                  <div className="ja-person-info">
+                    <img src="./logo192.png"></img>
+                    <ul className="ja-person-info-list">
+                      <li className="user-name">曹平</li>
+                      <li>
+                        <i className="ja-icon ja-idcard-icon"></i>
+                        330480198703091203
+                      </li>
+                      <li>
+                        <i className="ja-icon ja-circle-with-wave-icon"></i>
+                        连续18天未出现
+                      </li>
+                    </ul>
+                  </div>
+                </Link>
               </li>
               <li className="selected">
                 <div className="ja-person-info">
@@ -112,17 +115,20 @@ class Index extends Component {
               <Form layout="inline">
                 <Form.Item label="分离类型">
                   <Select placeholder="请选择" style={{ width: SELECT_WIDTH }}>
-                    {separateTypeList ? separateTypeList.map((item, key)=> {
-                      return  <Option key={key} value={item.key}>{item.value}</Option>
-                    }) : null}
+                    {separateTypeList
+                      ? separateTypeList.map((item, key) => {
+                          return (
+                            <Option key={key} value={item.key}>
+                              {item.value}
+                            </Option>
+                          );
+                        })
+                      : null}
                   </Select>
                 </Form.Item>
 
                 <Form.Item label="小区编码">
-                  <Select
-                    placeholder="请选择"
-                    style={{ width: SELECT_WIDTH }}
-                  >
+                  <Select placeholder="请选择" style={{ width: SELECT_WIDTH }}>
                     {/* <Option value=""></Option> */}
                   </Select>
                 </Form.Item>
@@ -171,6 +177,6 @@ class Index extends Component {
     );
   }
 }
-export default connect(({separate}) => ({
+export default connect(({ separate }) => ({
   separate
-}))(Form.create()(Index))
+}))(Form.create()(Index));

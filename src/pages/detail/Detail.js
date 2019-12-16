@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "dva";
 import { Chart, Axis, Legend, Tooltip, Geom } from "bizcharts";
+
 import {
   Form,
   Input,
@@ -26,6 +27,8 @@ const scale = {
   month: { alias: "Month" },
   count: { alias: "Sales" }
 };
+
+// Chart.setTheme('dark');
 
 class Detail extends Component {
   componentDidMount() {
@@ -146,13 +149,13 @@ class Detail extends Component {
                         月内每周时间段活动规律
                       </div>
                       <div className="ja-detail-chart-content">
-                        <Chart height={400} data={data} scale={scale} forceFit>
+                        <Chart height={400} data={data} scale={scale} forceFit theme="dark">
                           <Axis title name="month" />
                           <Axis title name="count" />
                           <Legend />
                           <Tooltip crosshairs={{ type: "rect" }} />
                           <Geom
-                            type="interval"
+                            type="line"
                             position="month*count"
                             color="month"
                           />
