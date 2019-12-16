@@ -1,10 +1,15 @@
-import {typeList, pageList} from '@/services/separate';
+import { typeList, pageList } from "@/services/separate";
 
 export default {
-
-  namespace: 'separate',
+  namespace: "separate",
 
   state: {
+    PAGE_SIZE_LIST: [
+      10,
+      20,
+      30, 
+      40
+    ],
     separateTypeList: [
       // {
       //   key: -1,
@@ -23,47 +28,61 @@ export default {
       //   value: "误报"
       // }
     ],
-    separatePageList: []
+    separatePageList: {
+      data: {
+        content: []
+      }
+    }
   },
 
   subscriptions: {
-    setup({ dispatch, history }) {  // eslint-disable-line
-    },
+    setup({ dispatch, history }) {
+      // eslint-disable-line
+    }
   },
 
   effects: {
-    *typeList({ payload }, { call, put }) {  // eslint-disable-line
+    *typeList({ payload }, { call, put }) {
+      // eslint-disable-line
       const response = yield call(typeList);
       yield put({
-        type: 'separateTypeList',
-        payload: response,
+        type: "separateTypeList",
+        payload: response
       });
     },
-    *pageList({ payload }, { call, put }) {  // eslint-disable-line
+    *pageList({ payload }, { call, put }) {
+      // eslint-disable-line
       const response = yield call(pageList);
       yield put({
-        type: 'separatePageList',
-        payload: response,
+        type: "separatePageList",
+        payload: response
       });
     },
-    *fetch({ payload }, { call, put }) {  // eslint-disable-line
-      yield put({ type: 'save' });
-    },
+    *fetch({ payload }, { call, put }) {
+      // eslint-disable-line
+      yield put({ type: "save" });
+    }
   },
 
   reducers: {
     separateTypeList(state, action) {
-      console.log(state, action)
+      console.log(state, action);
       return { ...state, separateTypeList: action.payload.data.data || [] };
     },
     separatePageList(state, action) {
-      console.log(state, action)
-      return { ...state, separatePageList: action.payload.data.data || [] };
+      console.log(state, action);
+      return {
+        ...state,
+        separatePageList: action.payload.data || {
+          data: {
+            content: []
+          }
+        }
+      };
     },
     save(state, action) {
       console.log(state, action);
       return { ...state, ...action.payload };
-    },
-  },
-
+    }
+  }
 };

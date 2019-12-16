@@ -24,6 +24,9 @@ const AutoCompleteOption = AutoComplete.Option;
 class Index extends Component {
   constructor() {
     super();
+    this.state = {
+      pageNum: ''
+    };
   }
   componentDidMount() {
     const { dispatch, separateTypeList } = this.props;
@@ -35,9 +38,33 @@ class Index extends Component {
     });
     // console.log(dispatch, separateTypeList)
   }
+
+  updateListByPageNum(value) {
+    alert(value + 'updateListByPageNum')
+  }
+
+  paginationChange(value) {
+
+  }
+
+  separateTypeChange(value) {
+    alert(value + 'separateTypeChange')
+  }
+
+  streetCodeChange(value) {
+    alert(value + 'streetCodeChange')
+  }
+
+  pageSizeChange(value) {
+    alert(value + 'pageSizeChange')
+  }
+
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { separateTypeList } = this.props.separate;
+    const { separateTypeList, separatePageList, PAGE_SIZE_LIST } = this.props.separate;
+    const separatePageListData = separatePageList.data || {};
+    const peopleInfoList =
+      separatePageListData.content || [];
     console.log(this.props);
     // const { autoCompleteResult } = this.state;
 
@@ -47,65 +74,28 @@ class Index extends Component {
         <div className="ja-content">
           <div style={{ padding: "15px 30px" }} className="ja-content-inner">
             <ul className="ja-person-card">
-              <li>
-                <Link to="/detail">
-                  <div className="ja-person-info">
-                    <img src="./logo192.png"></img>
-                    <ul className="ja-person-info-list">
-                      <li className="user-name">曹平</li>
-                      <li>
-                        <i className="ja-icon ja-idcard-icon"></i>
-                        330480198703091203
-                      </li>
-                      <li>
-                        <i className="ja-icon ja-circle-with-wave-icon"></i>
-                        连续18天未出现
-                      </li>
-                    </ul>
-                  </div>
-                </Link>
-              </li>
-              <li className="selected">
-                <div className="ja-person-info">
-                  <img src="./logo192.png"></img>
-                  <ul className="ja-person-info-list">
-                    <li className="user-name">曹平</li>
-                    <li>
-                      <i className="ja-icon ja-idcard-icon"></i>
-                      330480198703091203
-                    </li>
-                    <li>
-                      <i className="ja-icon ja-circle-with-wave-icon"></i>
-                      连续18天未出现
-                    </li>
-                  </ul>
-                </div>
-              </li>
-              <li></li>
-              <li className="selected"></li>
-              <li className="selected"></li>
-              {/* </ul>
-            <ul className="ja-person-card"> */}
-              <li>
-                <div className="ja-person-info">
-                  <img src="./logo192.png"></img>
-                  <ul className="ja-person-info-list">
-                    <li className="user-name">曹平</li>
-                    <li>
-                      <i className="ja-icon ja-idcard-icon"></i>
-                      330480198703091203
-                    </li>
-                    <li>
-                      <i className="ja-icon ja-circle-with-wave-icon"></i>
-                      连续18天未出现
-                    </li>
-                  </ul>
-                </div>
-              </li>
-              <li className="selected"></li>
-              <li></li>
-              <li className="selected"></li>
-              <li className="selected"></li>
+              {peopleInfoList.map((item, peopleInfoIndex)  => {
+                return (
+                  <li key={item.id} className={{selected: false}}>
+                    <Link to={'/detail/' + peopleInfoIndex}>
+                      <div className="ja-person-info">
+                        <img src={item.picUrl || './logo192.png'}></img>
+                        <ul className="ja-person-info-list">
+                          <li className="user-name">{item.name || '曹平'}</li>
+                          <li>
+                            <i className="ja-icon ja-idcard-icon"></i>
+                            {item.certificateNumber || ''}
+                          </li>
+                          <li>
+                            <i className="ja-icon ja-circle-with-wave-icon"></i>
+                            连续{item.unAppearDays}天未出现
+                          </li>
+                        </ul>
+                      </div>
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>
@@ -114,7 +104,7 @@ class Index extends Component {
             <Col span={21}>
               <Form layout="inline">
                 <Form.Item label="分离类型">
-                  <Select placeholder="请选择" style={{ width: SELECT_WIDTH }}>
+                  <Select placeholder="请选择" style={{ width: SELECT_WIDTH }} onChange={this.separateTypeChange}>
                     {separateTypeList
                       ? separateTypeList.map((item, key) => {
                           return (
@@ -128,7 +118,7 @@ class Index extends Component {
                 </Form.Item>
 
                 <Form.Item label="小区编码">
-                  <Select placeholder="请选择" style={{ width: SELECT_WIDTH }}>
+                  <Select placeholder="请选择" style={{ width: SELECT_WIDTH }} onChange={this.pageSizeChange}>
                     {/* <Option value=""></Option> */}
                   </Select>
                 </Form.Item>
@@ -146,27 +136,29 @@ class Index extends Component {
         <div className="ja-footer">
           <Row>
             <Col span={6}>
-              <span className="ja-text-middle">共94条数据</span>
+              <span className="ja-text-middle">共{separatePageList.count}条数据</span>
               <span className="ja-text-middle">每页</span>
-              <Select defaultValue="lucy" style={{ width: 60 }}>
-                <Option value="jack">10</Option>
-                <Option value="lucy">20</Option>
-                <Option value="Yiminghe">yiminghe</Option>
+              <Select defaultValue={20} style={{ width: 60 }} onChange={this.streetCodeChange}>
+                {PAGE_SIZE_LIST.map((sizeItem) => {
+                  return <Option value={sizeItem} key={sizeItem}>{sizeItem}</Option>
+                })}
               </Select>
             </Col>
             <Col span={18}>
               <div style={{ float: "right", lineHeight: "30px" }}>
-                <Button className="ja-float-right">跳转</Button>
-
-                <span className="ja-text-middle ja-float-right">/5页</span>
+                <Button className="ja-float-right" onClick={this.updateListByPageNum}>跳转</Button>
+                <span className="ja-text-middle ja-float-right">/{separatePageList.totalPages}页</span>
                 <Input
+                  // value={this.state.pageNum}
                   className="ja-float-right"
                   style={{ width: "40px", margin: "0 10px" }}
                 ></Input>
                 <span className="ja-text-middle ja-float-right">跳转至</span>
                 <Pagination
-                  defaultCurrent={1}
-                  total={50}
+                  onChange={this.paginationChange}
+                  pageSize={separatePageList.size}
+                  defaultCurrent={separatePageList.page + 1}
+                  total={separatePageList.count}
                   className="ja-float-right"
                 />
               </div>

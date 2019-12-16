@@ -5,6 +5,8 @@ const {
   addWebpackAlias
 } = require("customize-cra");
 const path = require("path");
+const SEPARATE_LIST = require('./mock/seperate-list.json');
+const SEPARATE_PAGE = require('./mock/separate-page.json');
 
 function resolve(dir) {
   return path.join(__dirname, ".", dir);
@@ -52,28 +54,10 @@ module.exports = {
 
       config.setup = function(app, server) {
         app.get("/ctm01jajsgarhfl/web/separate/type/list", function(req, res) {
-          res.json({
-            code: 0,
-            msg: "success",
-            data: [
-              {
-                key: -1,
-                value: "全部"
-              },
-              {
-                key: 0,
-                value: "人在户不在"
-              },
-              {
-                key: 1,
-                value: "户在人不在"
-              },
-              {
-                key: 999,
-                value: "误报"
-              }
-            ]
-          });
+          res.json(SEPARATE_LIST);
+        });
+        app.get("/ctm01jajsgarhfl/web/separate/page", function(req, res) {
+          res.json(SEPARATE_PAGE);
         });
       };
       // config.proxy = {

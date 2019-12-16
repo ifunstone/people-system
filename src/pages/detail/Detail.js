@@ -2,25 +2,10 @@ import React, { Component } from "react";
 import { connect } from "dva";
 import { Chart, Axis, Legend, Tooltip, Geom } from "bizcharts";
 
-import {
-  Form,
-  Input,
-  // Tooltip,
-  Icon,
-  Cascader,
-  Select,
-  Row,
-  Col,
-  Checkbox,
-  Button,
-  AutoComplete,
-  Pagination
-} from "antd";
+import { Form, Row, Col } from "antd";
 
 import "@/styles/index.less";
 import "@/styles/detail.less";
-
-
 
 const data = [{ month: "Jan.", count: 69, city: "tokyo" }];
 const scale = {
@@ -32,33 +17,48 @@ const scale = {
 
 class Detail extends Component {
   componentDidMount() {
-
+    const { dispatch, separateTypeList } = this.props;
+    dispatch({
+      type: "separate/pageList"
+    });
   }
 
   render() {
+    const { params } = this.props.match;
+    const { separateTypeList, separatePageList } = this.props.separate;
+    const separatePageListData = separatePageList.data || {};
+    const peopleInfoList = separatePageListData.content || [];
+    var peopleInfo = {};
+
+    if (peopleInfoList.length) {
+      peopleInfo = peopleInfoList[parseInt(params.index)];
+    }
+
+    console.log(peopleInfoList, params);
+
     return (
       <div className="ja-detail-layout">
         <div className="ja-detail-info-layer">
           <div className="ja-detail-info-over ja-detail-info-over__left"></div>
           <div className="ja-person-img">
-            <img src="./logo192.png"></img>
+            <img src={peopleInfo.picUrl || './logo192.png'}></img>
           </div>
           <div className="ja-person-info-detail">
-            <p className="ja-person-name">曹平</p>
+            <p className="ja-person-name">{peopleInfo.name}</p>
             <ul className="ja-person-info-list">
               <li>
-                <i className="ja-icon ja-idcard-icon"></i>330480198703091203
+                <i className="ja-icon ja-idcard-icon"></i>{peopleInfo.certificateNumber}
               </li>
               <li>
-                <i className="ja-icon ja-phone-icon"></i>13819942356
+                <i className="ja-icon ja-phone-icon"></i>{peopleInfo.name}
               </li>
               <li>
                 <i className="ja-icon ja-circle-with-wave-icon"></i>自2019-09-02
-                起连续<b>18</b>天未出现
+                起连续<b>{peopleInfo.name}</b>天未出现
               </li>
               <li>
                 <i className="ja-icon ja-home-icon"></i>
-                浙江省宁波市象山县xxx社区3幢2单元1303
+                {peopleInfo.name}
               </li>
             </ul>
           </div>
@@ -149,7 +149,13 @@ class Detail extends Component {
                         月内每周时间段活动规律
                       </div>
                       <div className="ja-detail-chart-content">
-                        <Chart height={400} data={data} scale={scale} forceFit theme="dark">
+                        <Chart
+                          height={400}
+                          data={data}
+                          scale={scale}
+                          forceFit
+                          theme="dark"
+                        >
                           <Axis title name="month" />
                           <Axis title name="count" />
                           <Legend />
@@ -182,4 +188,6 @@ class Detail extends Component {
   }
 }
 
-export default connect()(Form.create()(Detail));
+export default connect(({ separate }) => ({
+  separate
+}))(Form.create()(Detail));
