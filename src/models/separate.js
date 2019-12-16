@@ -10,6 +10,9 @@ export default {
       30, 
       40
     ],
+    STREET_CODE_LIST: [
+      {key: '33042164002160000005', value: '蓝天家园'}
+    ],
     separateTypeList: [
       // {
       //   key: -1,

@@ -25,7 +25,7 @@ class Index extends Component {
   constructor() {
     super();
     this.state = {
-      pageNum: '',
+      pageNum: "",
       params: {
         page: 0,
         size: 20,
@@ -95,11 +95,11 @@ class Index extends Component {
     const {
       separateTypeList,
       separatePageList,
-      PAGE_SIZE_LIST
+      PAGE_SIZE_LIST,
+      STREET_CODE_LIST
     } = this.props.separate;
     const separatePageListData = separatePageList.data || {};
     const peopleInfoList = separatePageListData.content || [];
-    console.log(this.props);
     // const { autoCompleteResult } = this.state;
 
     const SELECT_WIDTH = 220;
@@ -139,6 +139,7 @@ class Index extends Component {
               <Form layout="inline">
                 <Form.Item label="分离类型">
                   <Select
+                    defaultValue={separateTypeList[0] ? separateTypeList[0].value : ''}
                     placeholder="请选择"
                     style={{ width: SELECT_WIDTH }}
                     onChange={this.separateTypeChange.bind(this)}
@@ -158,10 +159,17 @@ class Index extends Component {
                 <Form.Item label="小区编码">
                   <Select
                     placeholder="请选择"
+                    defaultValue={STREET_CODE_LIST[0].value}
                     style={{ width: SELECT_WIDTH }}
-                    onChange={this.pageSizeChange.bind(this)}
+                    onChange={this.streetCodeChange.bind(this)}
                   >
-                    {/* <Option value=""></Option> */}
+                    {STREET_CODE_LIST.map((item, key) => {
+                      return (
+                        <Option key={key} value={item.key}>
+                          {item.value}
+                        </Option>
+                      );
+                    })}
                   </Select>
                 </Form.Item>
               </Form>
@@ -208,7 +216,7 @@ class Index extends Component {
                   /{separatePageList.totalPages}页
                 </span>
                 <Input
-                value={this.state.pageNum}
+                  value={this.state.pageNum}
                   onChange={this.pageNumInputChange.bind(this)}
                   className="ja-float-right"
                   style={{ width: "40px", margin: "0 10px" }}
