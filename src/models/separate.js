@@ -50,9 +50,10 @@ export default {
         payload: response
       });
     },
-    *pageList({ payload }, { call, put }) {
+    *pageList({ payload, params }, { call, put }) {
       // eslint-disable-line
-      const response = yield call(pageList);
+      console.log(params);
+      const response = yield call(pageList, params);
       yield put({
         type: "separatePageList",
         payload: response

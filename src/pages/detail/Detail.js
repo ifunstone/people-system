@@ -16,10 +16,22 @@ const scale = {
 // Chart.setTheme('dark');
 
 class Detail extends Component {
+  constructor() {
+    super();
+    this.state = {
+      params: {
+        page: 0,
+        size: 20,
+        type: 10,
+        unitIndexCode: 33042164002160000005
+      }
+    };
+  }
   componentDidMount() {
     const { dispatch, separateTypeList } = this.props;
     dispatch({
-      type: "separate/pageList"
+      type: "separate/pageList",
+      params: this.state.params
     });
   }
 
