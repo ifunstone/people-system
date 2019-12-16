@@ -56,7 +56,7 @@ class Index extends Component {
   }
 
   updateListByPageNum(value) {
-    this.state.params.page = value;
+    // this.state.params.page = value;
     this.fetchPageList();
     // alert(value + "updateListByPageNum");
   }
@@ -92,7 +92,6 @@ class Index extends Component {
   }
 
   render() {
-    const { getFieldDecorator } = this.props.form;
     const {
       separateTypeList,
       separatePageList,

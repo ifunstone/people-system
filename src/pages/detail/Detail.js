@@ -4,6 +4,8 @@ import { Chart, Axis, Legend, Tooltip, Geom } from "bizcharts";
 
 import { Form, Row, Col } from "antd";
 
+import { ImageSlideViewer } from "@/components";
+
 import "@/styles/index.less";
 import "@/styles/detail.less";
 
@@ -53,16 +55,18 @@ class Detail extends Component {
         <div className="ja-detail-info-layer">
           <div className="ja-detail-info-over ja-detail-info-over__left"></div>
           <div className="ja-person-img">
-            <img src={peopleInfo.picUrl || './logo192.png'}></img>
+            <img src={peopleInfo.picUrl || "./logo192.png"}></img>
           </div>
           <div className="ja-person-info-detail">
             <p className="ja-person-name">{peopleInfo.name}</p>
             <ul className="ja-person-info-list">
               <li>
-                <i className="ja-icon ja-idcard-icon"></i>{peopleInfo.certificateNumber}
+                <i className="ja-icon ja-idcard-icon"></i>
+                {peopleInfo.certificateNumber}
               </li>
               <li>
-                <i className="ja-icon ja-phone-icon"></i>{peopleInfo.name}
+                <i className="ja-icon ja-phone-icon"></i>
+                {peopleInfo.name}
               </li>
               <li>
                 <i className="ja-icon ja-circle-with-wave-icon"></i>自2019-09-02
@@ -100,54 +104,7 @@ class Detail extends Component {
                     </li>
                   </ul>
                   <div className="ja-baseinfo-des">最后一次出现在该小区</div>
-                  <div className="ja-slide-viewer">
-                    <div className="ja-slide-viewer__main">
-                      <img src="./logo192.png"></img>
-                      <div className="ja-slide-viewer-zoom">
-                        <i className="ja-icon ja-zoom-add-icon"></i>
-                        <span>100%</span>
-                        <i className="ja-icon ja-zoom-cut-icon"></i>
-                      </div>
-                    </div>
-                    <div className="ja-slide-viewer__control">
-                      <div className="ja-slide-btn ja-slide__prev_btn"></div>
-                      <div className="ja-slide-viewer__clip">
-                        <ul className="ja-slide-viewer-list">
-                          <li>
-                            <img src="./logo192.png"></img>
-                          </li>
-                          <li>
-                            <img src="./logo192.png"></img>
-                          </li>
-                          <li>
-                            <img src="./logo192.png"></img>
-                          </li>
-                          <li>
-                            <img src="./logo192.png"></img>
-                          </li>
-                          <li>
-                            <img src="./logo192.png"></img>
-                          </li>
-                          <li>
-                            <img src="./logo192.png"></img>
-                          </li>
-                          <li>
-                            <img src="./logo192.png"></img>
-                          </li>
-                          <li>
-                            <img src="./logo192.png"></img>
-                          </li>
-                          <li>
-                            <img src="./logo192.png"></img>
-                          </li>
-                          <li>
-                            <img src="./logo192.png"></img>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="ja-slide-btn ja-slide__next_btn"></div>
-                    </div>
-                  </div>
+                  <ImageSlideViewer></ImageSlideViewer>
                 </div>
               </div>
             </Col>
@@ -166,7 +123,7 @@ class Detail extends Component {
                           data={data}
                           scale={scale}
                           forceFit
-                          theme="dark"
+                          // theme="dark"
                         >
                           <Axis title name="month" />
                           <Axis title name="count" />
